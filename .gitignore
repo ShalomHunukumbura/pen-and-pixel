@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+
+# Build Output
+dist/
+build/
+
+# IDE-specific Files
+.vscode/
+*.swp
+
+# Tailwind CSS
+*.css.map
