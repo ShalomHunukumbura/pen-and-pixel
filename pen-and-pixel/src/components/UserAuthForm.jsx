@@ -1,12 +1,14 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
  import { useNavigate } from "react-router-dom";
 import AnimationWrapper from "./AnimationWrapper";
 import { signup,signin } from "../../services/api";
 import {Toaster, toast} from 'react-hot-toast' 
+import { AuthContext } from "./AuthContext";
  
 
 const UserAuthForm = ({type}) => {
     const isSignIn = type === "signin"
+    const {login} = useContext(AuthContext)
 
     //state for form fields
     const [formData, setFormData] = useState({
@@ -49,6 +51,7 @@ const UserAuthForm = ({type}) => {
                     password:formData.password
                 })
                 toast.success("User logged in successfully")
+                login(response.token)
                 //save token
                 localStorage.setItem("token",response.token)
             }
@@ -60,6 +63,8 @@ const UserAuthForm = ({type}) => {
                 password:"",
                 confirmPassword:""
             })
+
+            navigate("/")
 
         }catch(error){
             console.error("Error during submit", error);

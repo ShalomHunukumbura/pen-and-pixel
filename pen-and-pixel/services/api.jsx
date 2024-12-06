@@ -14,6 +14,8 @@ export const signup = async (userData) => {
         
         return response.data
     } catch (error){
+        console.log(`This is the errpr: ${error}`);
+        
         throw error.response.data
     }
 }

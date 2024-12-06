@@ -2,22 +2,43 @@ import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from "react";
 import UserAuthForm from "./components/UserAuthForm";
-import {ToastContainer} from 'react-toastify'
+ import AuthProvider from "./components/AuthContext";
+
+
+
 const App = () => {
     return (
-       <>   
        
-            <Navbar />
-            <div> {/* Push content below the navbar */}
-                <Routes>
-                    
-                    <Route path="/signin" element={<UserAuthForm type="signin" />} />
-                    <Route path="/signup" element={<UserAuthForm type="signup" />} />
-                </Routes>
-            </div>
-        </>
+        <AuthProvider>
+                <div>
+                {/* Navbar should always appear at the top */}
+                <Navbar />
+
+                
+                <div style={{ marginTop: "20px" }}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<div>Welcome to the Homepage!</div>}
+                        />
+                        <Route
+                            path="/signin"
+                            element={<UserAuthForm type="signin" />}
+                        />
+                        <Route
+                            path="/signup"
+                            element={<UserAuthForm type="signup" />}
+                        />
+                    </Routes>
+                </div>
+            </div>    
+        </AuthProvider>
+      
     );
 };
 
-
 export default App;
+
+
+
+  
