@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from "react";
 import UserAuthForm from "./components/UserAuthForm";
  import AuthProvider from "./components/AuthContext";
+import Editor from "./components/Editor";
 
 
 
@@ -28,6 +29,10 @@ const App = () => {
                         <Route
                             path="/signup"
                             element={<UserAuthForm type="signup" />}
+                        />
+                        <Route
+                            path="/write"
+                            element={<Editor/>}
                         />
                     </Routes>
                 </div>
