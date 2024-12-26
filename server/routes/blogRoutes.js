@@ -7,17 +7,25 @@ const router = express.Router()
 
 //create a new blog
 router.post("/", async (req, res) => {
-    const {title, content, bannerURL} = req.body
+    console.log(req.body);
+    
+    const {title, content, banner} = req.body
 
-    if (!title || !content || !bannerURL) {
+    if (!title || !content || !banner) {
         return res.status(400).json({error: "All fields are required"})
     }
 
     try{
-        const newBlog = new Blog({title, content, bannerURL})
+        const newBlog = new Blog({
+            title,
+            content,
+            bannerURL:banner
+        })
         await newBlog.save()
         res.status(201).json({message: "Blog created succesfully"})
     }catch (error){
+        console.log(error);
+        
         res.status(500).json({error: "Failed to create blog"})
     }
 })

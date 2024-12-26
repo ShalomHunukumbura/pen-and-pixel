@@ -4,6 +4,8 @@ import React from "react";
 import UserAuthForm from "./components/UserAuthForm";
  import AuthProvider from "./components/AuthContext";
 import Editor from "./components/Editor";
+import Home from "./components/Home";
+import BlogDetail from "./components/BlogDetail";
 
 
 
@@ -20,7 +22,7 @@ const App = () => {
                     <Routes>
                         <Route
                             path="/"
-                            element={<div>Welcome to the Homepage!</div>}
+                            element={<Home/>}
                         />
                         <Route
                             path="/signin"
@@ -33,6 +35,10 @@ const App = () => {
                         <Route
                             path="/write"
                             element={<Editor/>}
+                        />
+                        <Route
+                            path="/blog/:id"
+                            element={<BlogDetail/>}
                         />
                     </Routes>
                 </div>
